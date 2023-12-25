@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhqx63ie4dbg3"]
+
+[ext_resource type="Texture2D" uid="uid://b7he0yfjecwwq" path="res://assets/pipes/laser2.png" id="1_xjqq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfpg8"]
+size = Vector2(10, 192)
+
+[node name="Laser" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 8)
+texture = ExtResource("1_xjqq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(75, 0)
+shape = SubResource("RectangleShape2D_vfpg8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
