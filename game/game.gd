@@ -18,3 +18,6 @@ func spawn_pipes():
 
 func on_spawn_timer_timeout():
 	spawn_pipes()
+
+func on_plane_died():
+	GameManager.load_main_scene()
