@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-signal died
-
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
 
 const GRAVITY: float = 1800.0
 const POWER: float = -400.0
+
+var dead: bool = false
 
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta
@@ -24,6 +24,10 @@ func fly() -> void:
 		animation_player.play("fly")
 
 func die() -> void:
+	if dead:
+		return
+	
+	dead = true
 	animated_sprite.stop()
 	set_physics_process(false)
-	died.emit()
+	GameManager.on_game_over.emit()
