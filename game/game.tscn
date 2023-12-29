@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2nrsrjgcfmns"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_hh3yf"]
-[ext_resource type="Texture2D" uid="uid://cdpj2euv33pn1" path="res://assets/background/rocks_2.png" id="1_lsur6"]
 [ext_resource type="PackedScene" uid="uid://bl1omw4q84nru" path="res://plane/plane.tscn" id="2_76uf7"]
 [ext_resource type="PackedScene" uid="uid://df05nino8hsls" path="res://pipes/pipes.tscn" id="2_xmevj"]
+[ext_resource type="PackedScene" uid="uid://ddxdxxckrtc1a" path="res://scrolling_background/scrolling_background.tscn" id="3_7h1my"]
 [ext_resource type="PackedScene" uid="uid://dh1xh02srrqpm" path="res://game_over/game_over.tscn" id="5_cjhm8"]
 [ext_resource type="PackedScene" uid="uid://cdmr80eqnwvlc" path="res://hud/hud.tscn" id="5_lckgo"]
 [ext_resource type="AudioStream" uid="uid://bb1m8aytt24sm" path="res://assets/audio/engine.mp3" id="6_sj8bp"]
@@ -16,16 +16,16 @@ size = Vector2(496, 33)
 script = ExtResource("1_hh3yf")
 pipes_scene = ExtResource("2_xmevj")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(177, 322)
-texture = ExtResource("1_lsur6")
+[node name="ScrollingBackground" parent="." instance=ExtResource("3_7h1my")]
 
 [node name="Plane" parent="." instance=ExtResource("2_76uf7")]
 position = Vector2(39, 393)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(238, 868)
 shape = SubResource("RectangleShape2D_runss")
 
